@@ -1,6 +1,6 @@
 def sum_numbers(first, second):
     """
-    This function summarizes two numbers
+    Function summarizes two numbers
     Args:
         first (integer or float): number
         second (integer or float): number
@@ -9,13 +9,16 @@ def sum_numbers(first, second):
     """
     return first + second
 
-
-def arithmetic_average(list_numbers):
+def find_substring(str1, str2):
     """
-    This function counts the arithmetic mean of a list of numbers
+    Function that takes two strings and returns the index of the first
+    occurrence of the second string in the first string
     Args:
-        list_numbers (list): list of numbers
+        str1 (string): first line
+        str2 (string): second line
+
     Returns:
-        integer : number
+        integer : index
     """
-    return int(sum(list_numbers) / len(list_numbers))
+    index = str1.find(str2)
+    return index

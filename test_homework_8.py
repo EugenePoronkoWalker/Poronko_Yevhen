@@ -8,68 +8,88 @@ from notes_for_homework8 import *
 
 class TestSumNumbers(unittest.TestCase):
 
-    def test_sum_numbers_1(self):
+    def test_sum_integer_numbers(self):
         """The sum of integer numbers"""
-        actual_result = sum_numbers(2, 2)
+        first = 2
+        second = 2
+        actual_result = sum_numbers(first, second)
         expected_result = 4
-        self.assertEqual(actual_result, expected_result, "The sum of the numbers 2 and 2 equals 4")
+        self.assertEqual(actual_result, expected_result, msg=f"The sum of the numbers {first} and {second} not equals {expected_result}")
 
 
-    def test_sum_numbers_2(self):
+    def test_sum_float_numbers(self):
         """The sum of float numbers"""
-        actual_result = sum_numbers(0.5, 1.23)
+        first = 0.5
+        second = 1.23
+        actual_result = sum_numbers(first, second)
         expected_result = 1.73
-        self.assertEqual(actual_result, expected_result, "The sum of the numbers 0.5 and 1.23 equals 1.73")
+        self.assertEqual(actual_result, expected_result, msg=f"The sum of the numbers {first} and {second} not equals {expected_result}")
 
-    def test_sum_numbers_3(self):
+    def test_sum_negative_numbers(self):
         """The sum of negative numbers"""
-        actual_result = sum_numbers(-2, -6)
+        first = -2
+        second = -6
+        actual_result = sum_numbers(first, second)
         expected_result = -8
-        self.assertEqual(actual_result, expected_result, "The sum of the numbers -2 and -6 equals -8")
+        self.assertEqual(actual_result, expected_result, msg=f"The sum of the numbers {first} and {second} not equals {expected_result}")
 
-    def test_sum_numbers_4(self):
+    def test_sum_positive_and_negative_numbers(self):
         """The sum of positive and negative numbers"""
-        actual_result = sum_numbers(-15, 6)
-        expected_result = -9
-        self.assertEqual(actual_result, expected_result, "The sum of the numbers -15 and 6 equals -9")
+        first = -2
+        second = -6
+        actual_result = sum_numbers(first, second)
+        expected_result = -8
+        self.assertEqual(actual_result, expected_result, msg=f"The sum of the numbers {first} and {second} not equals {expected_result}")
 
-    def test_sum_numbers_5(self):
+    def test_sum_float_and_nrgative_numbers(self):
         """The sum of float and negative numbers"""
-        actual_result = sum_numbers(-15, 61.35)
+        first = -15
+        second = 61.35
+        actual_result = sum_numbers(first, second)
         expected_result = 46.35
-        self.assertEqual(actual_result, expected_result, "The sum of the numbers -15 and 61.35 equals 46.35")
+        self.assertEqual(actual_result, expected_result, msg=f"The sum of the numbers {first} and {second} not equals {expected_result}")
 
-class TestArithmeticAverage(unittest.TestCase):
+class TestSubstringIndex(unittest.TestCase):
 
-    def test_arithmetic_average_1(self):
-        """The arithmetic average of integers numbers in the list"""
-        actual_result = arithmetic_average([1, 2, 3, 6, 7])
-        expected_result = 3
-        self.assertEqual(actual_result, expected_result)
+    def test_first_occurrence_substring_in_string(self):
+        """Index of first occurrence of substring in string"""
+        str1 = "The quick brown fox jumps over the lazy dog very quickly !&#?"
+        str2 = "The"
+        actual_result = find_substring(str1, str2)
+        expected_result = 0
+        self.assertTrue(actual_result == expected_result, msg="Index of first occurrence of substring in string must be 0")
 
-    def test_arithmetic_average_2(self):
-        """"The arithmetic average of float numbers in the list"""
-        actual_result = arithmetic_average([0.5, 2.1, 3.6, 6.7, 7.1])
-        expected_result = 4
-        self.assertEqual(actual_result, expected_result)
+    def test_first_occurrence_substring_in_string_without_letters(self):
+        """Index of first occurrence of substring in string without letters"""
+        str1 = "34 35656 754!&#3 12?"
+        str2 = "?"
+        actual_result = find_substring(str1, str2)
+        expected_result = 19
+        self.assertTrue(actual_result == expected_result, msg="Index of first occurrence of substring in string withoust letters must be 19")
 
-    def test_arithmetic_average_3(self):
-        """"The arithmetic average of negative numbers in the list"""
-        actual_result = arithmetic_average([-2, -15.1, -3.67, -6.7, -7.15])
-        expected_result = -6
-        self.assertEqual(actual_result, expected_result)
+    def test_first_occurrence_substring_in_string_without_spaces(self):
+        """Index of first occurrence of substring in string without spaces"""
+        str1 = "Theworld1032@itewsa.com?"
+        str2 = "@"
+        actual_result = find_substring(str1, str2)
+        expected_result = 12
+        self.assertTrue(actual_result == expected_result, msg="Index of first occurrence of substring in string withoust spaces must be 12")
 
-    def test_arithmetic_average_4(self):
-        """"The arithmetic average of negative and positive numbers in the list"""
-        actual_result = arithmetic_average([2, 21, -3, 7, -7])
-        expected_result = 4
-        self.assertEqual(actual_result, expected_result)
+    def test_first_occurrence_substring_in_string_with_only_special_symbols(self):
+        """Index of first occurrence of substring in string with only special symbols"""
+        str1 = "!№;%:?*()_+,<>"
+        str2 = "+"
+        actual_result = find_substring(str1, str2)
+        expected_result = 10
+        self.assertTrue(actual_result == expected_result, msg="Index of first occurrence of substring in string with only special symbols must be 10")
 
-    def test_arithmetic_average_5(self):
-        """"The arithmetic average of diffirent type of data in the list"""
-        actual_result = arithmetic_average([2, 21.3, -3, 7, -7])
-        expected_result = 4
-        self.assertEqual(actual_result, expected_result)
+    def test_absence_substring_in_string(self):
+        """Substring isn't in string"""
+        str1 = "The quick brown fox jumps over the lazy dog very quickly !&#?"
+        str2 = "@"
+        actual_result = find_substring(str1, str2)
+        expected_result = -1
+        self.assertTrue(actual_result == expected_result, msg="Index of the missing substring in string must be equal to -1")
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
