@@ -35,13 +35,13 @@ class TestSumNumbers(unittest.TestCase):
 
     def test_sum_positive_and_negative_numbers(self):
         """The sum of positive and negative numbers"""
-        first = -2
+        first = 2
         second = -6
         actual_result = sum_numbers(first, second)
-        expected_result = -8
+        expected_result = -4
         self.assertEqual(actual_result, expected_result, msg=f"The sum of the numbers {first} and {second} not equals {expected_result}")
 
-    def test_sum_float_and_nrgative_numbers(self):
+    def test_sum_float_and_negative_numbers(self):
         """The sum of float and negative numbers"""
         first = -15
         second = 61.35
